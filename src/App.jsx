@@ -1,13 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [charactersData, setCharactersData] = useState({})
 
-
-
   function handleClick(e) {
     fetchData()
   }
+
 
   function fetchData(url = 'https://rickandmortyapi.com/api/character') {
     fetch(url)
@@ -23,6 +22,11 @@ function App() {
  
        }) */
   }
+
+  // 💥 Never call fetch data directly
+  //fetchData()
+
+  useEffect(fetchData, [])
 
 
   return (
